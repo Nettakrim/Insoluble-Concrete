@@ -1,6 +1,6 @@
 # Insoluble Concrete
 
-Stops concrete powder from hardening in water
+Stops concrete powder from hardening when touching water
 
 Instead, throw the concrete powder items into a water cauldron!
 
