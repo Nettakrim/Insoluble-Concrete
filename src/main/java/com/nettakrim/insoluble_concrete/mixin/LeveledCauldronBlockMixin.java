@@ -7,8 +7,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.cauldron.CauldronBehavior;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -36,19 +34,10 @@ public class LeveledCauldronBlockMixin extends AbstractCauldronBlock {
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (this.precipitation.equals(Biome.Precipitation.RAIN) && this.isEntityTouchingFluid(state, pos, entity) && entity instanceof ItemEntity itemEntity) {
-            ItemStack itemStack = itemEntity.getStack();
-            Item newItem = InsolubleConcrete.instance.Convert(itemStack.getItem());
+        if (!this.precipitation.equals(Biome.Precipitation.RAIN)) return;
+        if (!this.isEntityTouchingFluid(state, pos, entity)) return;
+        if (!(entity instanceof ItemEntity itemEntity)) return;
 
-            if (!newItem.equals(itemStack.getItem())) {
-                ItemStack newItemStack = new ItemStack(newItem, itemStack.getCount());
-
-                if (itemStack.hasCustomName()) {
-                    newItemStack.setCustomName(itemStack.getName());
-                }
-
-                itemEntity.setStack(newItemStack);
-            }
-        }
+        InsolubleConcrete.instance.Convert(itemEntity);
     }
 }
