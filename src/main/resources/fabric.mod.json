@@ -1,0 +1,33 @@
+{
+	"schemaVersion": 1,
+	"id": "insoluble_concrete",
+	"version": "${version}",
+	"name": "Insoluble_Concrete",
+	"description": "Stops concrete powder from hardening when it touches water, throw it in a water cauldron instead!",
+	"authors": [
+		"Nettakrim"
+	],
+	"contact": {
+		"sources": "https://github.com/Nettakrim/Insoluble-Concrete"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/insoluble_concrete/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.nettakrim.insoluble_concrete.InsolubleConcrete"
+		]
+	},
+	"mixins": [
+		"insoluble_concrete.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.3",
+		"minecraft": "~1.20.4",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

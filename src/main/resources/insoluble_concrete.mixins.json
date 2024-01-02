@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "com.nettakrim.insoluble_concrete.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "ConcretePowderBlockMixin",
+    "ExampleMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+	}
+}
