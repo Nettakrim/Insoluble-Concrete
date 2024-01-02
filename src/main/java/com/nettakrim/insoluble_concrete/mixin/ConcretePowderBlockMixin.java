@@ -12,8 +12,8 @@ import org.spongepowered.asm.mixin.injection.At;
 public class ConcretePowderBlockMixin implements ConcretePowderBlockAccessor {
 	@Shadow @Final private Block hardenedState;
 
-	@ModifyReturnValue(at = @At("RETURN"), method = "shouldHarden")
-	private static boolean init(boolean original) {
+	@ModifyReturnValue(at = @At("RETURN"), method = "hardensIn")
+	private static boolean hardensIn(boolean original) {
 		return false;
 	}
 
