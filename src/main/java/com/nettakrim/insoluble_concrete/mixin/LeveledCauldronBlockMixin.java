@@ -6,6 +6,7 @@ import net.minecraft.block.AbstractCauldronBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.cauldron.CauldronBehavior;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityCollisionHandler;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -33,7 +34,7 @@ public class LeveledCauldronBlockMixin extends AbstractCauldronBlock {
     }
 
     @Override
-    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
+    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity, EntityCollisionHandler handler) {
         if (!this.precipitation.equals(Biome.Precipitation.RAIN)) return;
         if (!this.isEntityTouchingFluid(state, pos, entity)) return;
         if (!(entity instanceof ItemEntity itemEntity)) return;
