@@ -26,11 +26,7 @@ public class InsolubleConcrete implements ModInitializer {
 
 		if (newItem.equals(itemStack.getItem())) return;
 
-		ItemStack newItemStack = new ItemStack(newItem, itemStack.getCount());
-
-		if (itemStack.hasCustomName()) {
-			newItemStack.setCustomName(itemStack.getName());
-		}
+		ItemStack newItemStack = itemStack.copyComponentsToNewStack(newItem, itemStack.getCount());
 
 		itemEntity.setStack(newItemStack);
 	}
