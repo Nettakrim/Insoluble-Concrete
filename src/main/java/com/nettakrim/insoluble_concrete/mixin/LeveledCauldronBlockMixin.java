@@ -36,7 +36,6 @@ public class LeveledCauldronBlockMixin extends AbstractCauldronBlock {
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity, EntityCollisionHandler handler) {
         if (!this.precipitation.equals(Biome.Precipitation.RAIN)) return;
-        if (!this.isEntityTouchingFluid(state, pos, entity)) return;
         if (!(entity instanceof ItemEntity itemEntity)) return;
 
         InsolubleConcrete.instance.Convert(itemEntity);
