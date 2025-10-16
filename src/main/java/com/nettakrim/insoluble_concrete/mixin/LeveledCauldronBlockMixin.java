@@ -14,6 +14,9 @@ import net.minecraft.world.biome.Biome;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(net.minecraft.block.LeveledCauldronBlock.class)
 public class LeveledCauldronBlockMixin extends AbstractCauldronBlock {
@@ -33,8 +36,8 @@ public class LeveledCauldronBlockMixin extends AbstractCauldronBlock {
         return false;
     }
 
-    @Override
-    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity, EntityCollisionHandler handler) {
+    @Inject(at = @At("HEAD"), method = "onEntityCollision")
+    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity, EntityCollisionHandler handler, boolean bl, CallbackInfo ci) {
         if (!this.precipitation.equals(Biome.Precipitation.RAIN)) return;
         if (!(entity instanceof ItemEntity itemEntity)) return;
 
