@@ -3,8 +3,9 @@
   "package": "com.nettakrim.insoluble_concrete.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "LeveledCauldronBlockMixin",
-    "ConcretePowderBlockMixin"
+    "ConcretePowderBlockMixin",
+    "FallingBlockEntityMixin",
+    "LeveledCauldronBlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1

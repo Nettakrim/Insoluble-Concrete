@@ -1,12 +1,11 @@
 package com.nettakrim.insoluble_concrete;
 
 import net.fabricmc.api.ModInitializer;
-
-import net.minecraft.block.ConcretePowderBlock;
-import net.minecraft.entity.ItemEntity;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.ConcretePowderBlock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,14 +20,14 @@ public class InsolubleConcrete implements ModInitializer {
 	}
 
 	public void Convert(ItemEntity itemEntity) {
-		ItemStack itemStack = itemEntity.getStack();
+		ItemStack itemStack = itemEntity.getItem();
 		Item newItem = ConvertItem(itemStack.getItem());
 
 		if (newItem.equals(itemStack.getItem())) return;
 
-		ItemStack newItemStack = itemStack.copyComponentsToNewStack(newItem, itemStack.getCount());
+		ItemStack newItemStack = itemStack.transmuteCopy(newItem, itemStack.getCount());
 
-		itemEntity.setStack(newItemStack);
+		itemEntity.setItem(newItemStack);
 	}
 
 	public Item ConvertItem(Item item) {
